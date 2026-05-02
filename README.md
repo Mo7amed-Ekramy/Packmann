@@ -12,7 +12,6 @@ This project implements classical AI search algorithms to navigate a Pac-Man age
   * Dijkstra’s Algorithm
 * Obstacle handling (walls and ghosts)
 * Path reconstruction using parent tracking
-* Visualization of the solution using Matplotlib
 
 ## 🧠 Problem Description
 
@@ -49,14 +48,6 @@ Find a valid (and optimal) path from `P` to `F` while avoiding invalid cells.
 * Finds the shortest path based on cost
 * Useful for weighted environments
 
-## 📊 Visualization
-
-The final path is visualized using Matplotlib, showing:
-
-* Start and goal positions
-* Obstacles and ghost zones
-* The computed path
-
 ## 🧪 Example Output
 
 * Path from start to goal
@@ -73,7 +64,6 @@ The final path is visualized using Matplotlib, showing:
 ## 🛠️ Technologies Used
 
 * Python
-* Matplotlib
 * Basic Data Structures (Queue, Set, Dictionary)
 
 ## 👨‍💻 Author
