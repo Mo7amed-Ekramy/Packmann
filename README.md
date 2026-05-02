@@ -79,3 +79,5 @@ The final path is visualized using Matplotlib, showing:
 ## 👨‍💻 Author
 
 Mohamed Ekramy
+Mahmoud Sayed
+Mohamed ElMotaz
