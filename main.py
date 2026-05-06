@@ -1,28 +1,34 @@
 import heapq
 
 grid = [
- ['P', 0, 0, 0],
- [0, 1, 0, 0],
- [0, 0, 0, 0],
- ['F', 0, 0, 0]
+    ['P', 0,  0,  0,  0,  0,  0,  0],
+    [ 0,  1,  1,  0,  1, 'G',  1,  0],
+    [ 0,  1,  0,  0,  0,  0,  1,  0],
+    [ 0,  1,  0,  1,  1,  0,  1,  0],
+    [ 0,  0,  0,  1, 'G', 0,  0,  0],
+    [ 1,  1,  0,  1,  1,  1,  1,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  1,  1,  1,  1,  1,  0, 'F']
 ]
 
 weights = {
-    (0,1): 5,
-    (0,2): 2,
-    (0,3): 5,
-    (1,0): 7,
-    (1,1): 5,
-    (1,2): 2,
-    (1,3): 5,
-    (2,0): 17,
-    (2,1): 5,
-    (2,2): 2,
-    (2,3): 5,
-    (3,0): 1,
-    (3,1): 5,
-    (3,2): 7,
-    (3,3): 5,
+    (1, 0): 15,
+    (2, 0): 15,
+    (3, 0): 15,
+    (4, 0): 15,
+    (4, 1): 15,
+
+    (2, 4): 20,
+    (2, 5): 20,
+    (3, 5): 25,
+    (4, 5): 25,
+
+    (0, 3): 2,
+    (0, 4): 2,
+    (0, 5): 3,
+    (2, 7): 2,
+    (3, 7): 2,
+    (4, 7): 4
 }
 
 
@@ -34,17 +40,16 @@ def find_start(grid):
 
 
 def get_neighbors(row, col, grid):
-    directions = [(1,0), (0,1), (0,-1), (-1,0)]
-    grid = grid
+                # Down   Right    Left     UP
+    directions = [(1,0),  (0,-1), (0,1), (-1,0)]
     neighbors = []
     for dr, dc in directions:
         new_row = row + dr
         new_col = col + dc
-        if 0 <= new_row < len(grid):
-            if 0 <= new_col < len(grid[0]):
-                if grid[new_row][new_col] != 1:
-                    if grid[new_row][new_col] != 'G':
-                        neighbors.append((new_row,new_col))
+        if 0 <= new_row < len(grid) and 0 <= new_col < len(grid[0]):
+            if grid[new_row][new_col] != 1:
+                if grid[new_row][new_col] != 'G':
+                    neighbors.append((new_row,new_col))
     return neighbors
 
 def BFS(vertex):
@@ -123,7 +128,7 @@ def DFS(vertex):
 
 
 def Dijkstra(vertex):
-    pq = []
+    pq = [] #=> Min-Heap
     heapq.heappush(pq, (0, vertex))  # (cost, node)
 
     distance = {vertex: 0}
